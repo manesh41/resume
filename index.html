@@ -2,70 +2,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Builder</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        form {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        #resume-output {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-            white-space: pre-wrap;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Resume Builder</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Resume Builder</h1>
 
-    <!-- Resume Form -->
+  <div class="container">
+    <h1>Professional Resume Builder</h1>
+
     <form id="resume-form">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+      <label for="resume-type">Select Resume Type:</label>
+      <select id="resume-type" name="resume-type">
+        <option value="chronological">Chronological Resume</option>
+        <option value="functional">Functional Resume</option>
+        <option value="combination">Combination Resume</option>
+        <option value="targeted">Targeted Resume</option>
+        <option value="creative">Creative Resume</option>
+        <option value="infographic">Infographic Resume</option>
+        <option value="video">Video Resume</option>
+      </select>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+      <!-- Chronological Resume Fields -->
+      <div id="chronological" class="resume-section">
+        <label for="work-experience">Work Experience:</label>
+        <textarea id="work-experience" name="work-experience" placeholder="Enter your work experience"></textarea>
+      </div>
 
-        <label for="phone">Phone Number:</label>
-        <input type="text" id="phone" name="phone"><br><br>
-
+      <!-- Functional Resume Fields -->
+      <div id="functional" class="resume-section">
         <label for="skills">Skills:</label>
-        <textarea id="skills" name="skills"></te
+        <textarea id="skills" name="skills" placeholder="Enter your skills"></textarea>
+      </div>
+
+      <!-- Creative Resume Fields -->
+      <div id="creative" class="resume-section">
+        <label for="portfolio">Portfolio Link:</label>
+        <input type="text" id="portfolio" name="portfolio" placeholder="Enter your portfolio URL">
+      </div>
+
+      <!-- Submit Button -->
+      <button type="button" onclick="generateResume()">Generate Resume</button>
+    </form>
+
+    <!-- Preview Section -->
+    <div class="resume-preview" id="preview-section">
+      <h3>Resume Preview</h3>
+      <div id="resume-content"></div>
+      
+      <div class="download-btns">
+        <a href="#" id="download-pdf" onclick="downloadResume('pdf')">Download PDF</a>
+        <a href="#" id="download-jpg" onclick="downloadResume('jpg')">Download JPG</a>
+        <a href="#" id="download-png" onclick="downloadResume('png')">Download PNG</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
