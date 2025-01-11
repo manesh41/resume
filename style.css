@@ -1,117 +1,102 @@
-/* Global Styles */
+/* Basic reset for body */
 body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  color: #333;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
+/* Container to hold the resume content */
 .container {
-  background-color: #ffffff;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  max-width: 900px;
-  width: 100%;
-  text-align: center;
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-  font-size: 30px;
-  color: #007BFF;
-  margin-bottom: 30px;
+/* Header with name, photo and contact info */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #0066cc;
+    padding-bottom: 20px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 40px;
+.header img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-label {
-  font-size: 18px;
-  font-weight: bold;
+.header .info {
+    text-align: right;
 }
 
-input, textarea, select, button {
-  padding: 12px;
-  font-size: 16px;
-  border: 2px solid #ccc;
-  border-radius: 6px;
-  margin-bottom: 20px;
+.header .info h1 {
+    font-size: 36px;
+    margin: 0;
+    color: #333;
 }
 
-input, select {
-  width: 100%;
+.header .info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #777;
 }
 
-textarea {
-  width: 100%;
-  height: 100px;
-  resize: vertical;
+/* Resume sections */
+.section {
+    margin-top: 20px;
 }
 
-button {
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+.section h2 {
+    font-size: 24px;
+    color: #0066cc;
+    border-bottom: 2px solid #0066cc;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-button:hover {
-  background-color: #0056b3;
+.section ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-.resume-preview {
-  background-color: #f4f7fc;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  text-align: left;
+.section li {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #333;
 }
 
-.resume-preview h3 {
-  font-size: 24px;
-  margin-bottom: 20px;
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #777;
 }
 
-#download-pdf, #download-jpg, #download-png {
-  width: 32%;
-  display: inline-block;
-  margin-right: 5px;
-  margin-bottom: 15px;
+.footer p {
+    margin: 0;
 }
 
-#download-pdf:hover, #download-jpg:hover, #download-png:hover {
-  background-color: #0056b3;
+/* Button to download the resume */
+.download-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: #0066cc;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    margin-top: 30px;
+    border-radius: 5px;
 }
 
-/* Footer Styles */
-footer {
-  background-color: #007BFF;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  margin-top: 50px;
-  font-size: 14px;
-}
-
-footer strong {
-  font-weight: bold;
-}
-
-/* Profile Image Styles */
-.profile-image {
-  max-width: 150px;
-  max-height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
+.download-btn:hover {
+    background-color: #005bb5;
 }
