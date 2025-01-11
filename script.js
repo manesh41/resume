@@ -18,7 +18,16 @@ window.onload = function () {
 
 function generateResume() {
   const resumeType = resumeTypeSelect.value;
-  let resumeContent = `<h2>${resumeType.charAt(0).toUpperCase() + resumeType.slice(1)} Resume</h2>`;
+  const fullName = document.getElementById('full-name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const address = document.getElementById('address').value;
+  let resumeContent = `
+    <h2>${fullName}'s ${resumeType.charAt(0).toUpperCase() + resumeType.slice(1)} Resume</h2>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Phone:</strong> ${phone}</p>
+    <p><strong>Address:</strong> ${address}</p>
+  `;
 
   if (resumeType === "chronological") {
     const workExperience = document.getElementById('work-experience').value;
@@ -39,10 +48,8 @@ function downloadResume(format) {
   const resumeContent = document.getElementById('resume-content').innerHTML;
 
   if (format === 'pdf') {
-    // Use a library like jsPDF to generate PDF
     alert('Download PDF feature is not implemented yet.');
   } else if (format === 'jpg' || format === 'png') {
-    // Use libraries like html2canvas to capture the resume as image
     alert('Download JPG/PNG feature is not implemented yet.');
   }
 }
