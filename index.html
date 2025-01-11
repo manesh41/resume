@@ -5,80 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Builder</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Resume Builder</h1>
-        <form id="resumeForm">
-            <!-- Image Upload Section -->
-            <div class="input-group">
-                <label for="imageUpload">Upload Photo:</label>
-                <input type="file" id="imageUpload" accept="image/*">
-            </div>
+        <header>
+            <h1>Resume Builder</h1>
+        </header>
+        
+        <div class="form-section">
+            <label for="photo">Upload Photo</label>
+            <input type="file" id="photo" accept="image/*">
+        </div>
+
+        <div class="form-section">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label for="number">Phone Number</label>
+            <input type="text" id="number" placeholder="Enter your phone number">
+
+            <label for="experience">Work Experience</label>
+            <select id="experience">
+                <option value="fresher">Fresher</option>
+                <option value="experienced">Experienced</option>
+            </select>
             
-            <!-- Personal Information Section -->
-            <div class="input-group">
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" required placeholder="Your Name">
+            <div id="experienceSection" style="display:none;">
+                <label for="workExperience">Work Experience</label>
+                <textarea id="workExperience" placeholder="Enter your work experience"></textarea>
             </div>
 
-            <div class="input-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" required placeholder="Your Email">
-            </div>
+            <label for="skills">Skills</label>
+            <textarea id="skills" placeholder="Enter your skills"></textarea>
 
-            <div class="input-group">
-                <label for="phone">Phone Number:</label>
-                <input type="text" id="phone" required placeholder="Your Phone Number">
-            </div>
+            <label for="portfolio">Portfolio Link</label>
+            <input type="text" id="portfolio" placeholder="Enter your portfolio link">
+            
+            <button onclick="generateResume()">Generate Resume</button>
+        </div>
 
-            <!-- Experience Section -->
-            <div class="input-group">
-                <label for="experienceType">Experience Type:</label>
-                <select id="experienceType" required>
-                    <option value="">Select Experience Type</option>
-                    <option value="fresher">Fresher</option>
-                    <option value="experienced">Experienced</option>
-                </select>
-            </div>
-
-            <!-- Work Experience Section (Visible for Experienced only) -->
-            <div class="input-group" id="workExperienceGroup" style="display:none;">
-                <label for="workExperience">Work Experience:</label>
-                <textarea id="workExperience" placeholder="Your Work Experience"></textarea>
-            </div>
-
-            <!-- Skills Section -->
-            <div class="input-group">
-                <label for="skills">Skills:</label>
-                <textarea id="skills" placeholder="Your Skills"></textarea>
-            </div>
-
-            <!-- Portfolio Section -->
-            <div class="input-group">
-                <label for="portfolio">Portfolio URL:</label>
-                <input type="url" id="portfolio" placeholder="Your Portfolio Link (Optional)">
-            </div>
-
-            <!-- Generate Resume Button -->
-            <button type="button" id="generateResume" class="btn-primary">Generate Resume</button>
-        </form>
-
-        <!-- Resume Preview Section -->
-        <div class="resume-preview" id="resumePreview" style="display:none;">
-            <h3>Resume Preview</h3>
+        <div id="resumePreview" class="hidden">
+            <h2>Preview Resume</h2>
             <div id="resumeContent"></div>
-            <button id="downloadBtn">Download Resume</button>
+            <button onclick="downloadPDF()">Download PDF</button>
         </div>
     </div>
 
     <footer>
-        <strong>Created by MANISH POONIA</strong>
+        <p>Created by MANISH POONIA</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 

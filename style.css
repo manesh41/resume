@@ -58,11 +58,6 @@ input[type="file"] {
     padding: 10px;
 }
 
-input[type="file"]:hover {
-    border-color: #3498db;
-}
-
-/* Button Styling */
 button {
     padding: 12px 30px;
     background-color: #3498db;
@@ -98,7 +93,6 @@ button:hover {
     color: #555;
 }
 
-/* Footer Styling */
 footer {
     text-align: center;
     margin-top: 40px;
@@ -108,26 +102,6 @@ footer {
 
 footer p {
     margin: 0;
-}
-
-/* For Small Screens */
-@media screen and (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-
-    h1 {
-        font-size: 28px;
-    }
-
-    label {
-        font-size: 14px;
-    }
-
-    input, textarea, select, button {
-        font-size: 14px;
-        padding: 10px;
-    }
 }
 
 .hidden {
