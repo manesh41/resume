@@ -1,102 +1,134 @@
-/* Basic reset for body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-/* Container to hold the resume content */
-.container {
-    width: 80%;
-    max-width: 900px;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Header with name, photo and contact info */
-.header {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f06, #48c6ef);
+    color: #333;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    border-bottom: 2px solid #0066cc;
-    padding-bottom: 20px;
+    height: 100vh;
 }
 
-.header img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.header .info {
-    text-align: right;
-}
-
-.header .info h1 {
-    font-size: 36px;
-    margin: 0;
-    color: #333;
-}
-
-.header .info p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #777;
-}
-
-/* Resume sections */
-.section {
-    margin-top: 20px;
-}
-
-.section h2 {
-    font-size: 24px;
-    color: #0066cc;
-    border-bottom: 2px solid #0066cc;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-}
-
-.section ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.section li {
-    margin-bottom: 15px;
-    font-size: 16px;
-    color: #333;
-}
-
-.footer {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 14px;
-    color: #777;
-}
-
-.footer p {
-    margin: 0;
-}
-
-/* Button to download the resume */
-.download-btn {
-    display: block;
+.container {
     width: 100%;
-    padding: 10px;
+    max-width: 900px;
+    background-color: #ffffff;
+    padding: 40px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
     text-align: center;
-    background-color: #0066cc;
-    color: white;
-    font-size: 18px;
-    text-decoration: none;
-    margin-top: 30px;
-    border-radius: 5px;
+    margin-top: 50px;
 }
 
-.download-btn:hover {
-    background-color: #005bb5;
+.header h1 {
+    font-size: 36px;
+    color: #ff6f61;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
+
+.header p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group label {
+    font-weight: 600;
+    color: #ff6f61;
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    background-color: #f7f7f7;
+}
+
+.input-group input:focus, .input-group textarea:focus {
+    border-color: #ff6f61;
+    box-shadow: 0 0 8px rgba(255, 111, 97, 0.6);
+}
+
+textarea {
+    resize: vertical;
+}
+
+.btn-primary {
+    background-color: #ff6f61;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #e55d50;
+}
+
+.resume-preview {
+    display: none;
+    margin-top: 40px;
+    background-color: #f2f2f2;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+#resumeContent h3 {
+    color: #333;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+#resumeContent p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#downloadBtn {
+    background-color: #2196F3;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+#downloadBtn:hover {
+    background-color: #1976D2;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 14px;
+    color: #777;
+}
+
+footer strong {
+    color: #ff6f61;
+}
+

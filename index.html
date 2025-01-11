@@ -4,22 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Builder</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <!-- Resume Header -->
         <div class="header">
-            <img src="your-photo-url.jpg" alt="Profile Photo">
-            <div class="info">
-                <h1>John Doe</h1>
-                <p>Email: john.doe@example.com</p>
-                <p>Phone: +123 456 7890</p>
-                <p>Location: New York, USA</p>
-            </div>
+            <h1>Build Your Professional Resume</h1>
+            <p>Stand out with a customized resume that suits your profile</p>
         </div>
+        <form id="resumeForm" class="form-container">
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required placeholder="Enter your full name">
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required placeholder="Enter your email address">
+            </div>
+            <div class="input-group">
+                <label for="photo">Upload Photo</label>
+                <input type="file" id="photo" accept="image/*">
+            </div>
+            <div class="input-group">
+                <label for="experience">Experience</label>
+                <textarea id="experience" placeholder="Describe your work experience" rows="5"></textarea>
+            </div>
+            <div class="input-group">
+                <label for="skills">Skills</label>
+                <textarea id="skills" placeholder="List your skills" rows="5"></textarea>
+            </div>
+            <button type="submit" id="generateBtn" class="btn-primary">Generate Resume</button>
+        </form>
+        <div id="resumePreview" class="resume-preview">
+            <h2>Preview Your Resume</h2>
+            <div id="resumeContent"></div>
+            <button id="downloadBtn" class="btn-secondary">Download Resume</button>
+        </div>
+    </div>
+    <footer>
+        <p>Created by <strong>MANISH POONIA</strong></p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
 
-        <!-- Resume Sections -->
-        <div class="section">
-            <h2>Work Expe
 
