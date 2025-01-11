@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Professional Resume Builder</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-
   <div class="container">
-    <h1>Professional Resume Builder</h1>
+    <h1>Resume Builder</h1>
 
-    <!-- Resume Form -->
+    <!-- Form to Enter Details -->
     <form id="resume-form">
       <label for="full-name">Full Name:</label>
       <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
@@ -36,21 +35,34 @@
       <label for="portfolio">Portfolio Link:</label>
       <input type="url" id="portfolio" name="portfolio" placeholder="Enter your portfolio URL">
 
-      <button type="button" onclick="generateResume()">Generate Resume</button>
+      <!-- Profile Picture Upload -->
+      <label for="profile-photo">Upload Profile Picture:</label>
+      <input type="file" id="profile-photo" name="profile-photo" accept="image/*" onchange="previewImage(event)">
+
+      <!-- Resume Type Selector -->
+      <label for="resume-type">Resume Type:</label>
+      <select id="resume-type">
+        <option value="modern">Modern</option>
+        <option value="professional">Professional</option>
+      </select>
+
+      <button type="button" id="generate-btn">Generate Resume</button>
     </form>
 
-    <!-- Preview Section -->
-    <div class="resume-preview" id="preview-section" style="display: none;">
+    <!-- Preview and Download -->
+    <div id="preview-section" class="resume-preview" style="display:none;">
       <h3>Resume Preview</h3>
       <div id="resume-content"></div>
-
-      <div class="download-btns">
-        <button id="download-pdf" onclick="downloadResume('pdf')">Download PDF</button>
-        <button id="download-jpg" onclick="downloadResume('jpg')">Download JPG</button>
-        <button id="download-png" onclick="downloadResume('png')">Download PNG</button>
-      </div>
+      <button id="download-pdf" onclick="downloadResume('pdf')">Download PDF</button>
+      <button id="download-jpg" onclick="downloadResume('jpg')">Download JPG</button>
+      <button id="download-png" onclick="downloadResume('png')">Download PNG</button>
     </div>
   </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>Created by <strong>MANISH POONIA</strong></p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
