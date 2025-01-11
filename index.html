@@ -1,10 +1,57 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Builder</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resume-output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            white-space: pre-wrap;
+        }
+    </style>
 </head>
 <body>
     <h1>Resume Builder</h1>
@@ -21,24 +68,4 @@
         <input type="text" id="phone" name="phone"><br><br>
 
         <label for="skills">Skills:</label>
-        <textarea id="skills" name="skills"></textarea><br><br>
-
-        <label for="education">Education:</label>
-        <textarea id="education" name="education"></textarea><br><br>
-
-        <label for="experience">Work Experience:</label>
-        <textarea id="experience" name="experience"></textarea><br><br>
-
-        <button type="button" onclick="generateResume()">Generate Resume</button>
-    </form>
-
-    <!-- Output Resume -->
-    <h2>Your Resume:</h2>
-    <div id="resume-output"></div>
-
-    <!-- Download Button -->
-    <button id="download-btn" style="display:none;" onclick="downloadResume()">Download Resume</button>
-
-    <script src="script.js"></script>
-</body>
-</html>
+        <textarea id="skills" name="skills"></te
