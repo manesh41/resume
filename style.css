@@ -35,7 +35,7 @@ label {
   color: #555;
 }
 
-input, select, textarea {
+input, textarea {
   width: 100%;
   padding: 12px;
   margin: 12px 0;
@@ -61,10 +61,6 @@ button:hover {
   background-color: #45a049;
 }
 
-.resume-section {
-  display: none;
-}
-
 .resume-preview {
   background-color: #f7f7f7;
   padding: 20px;
@@ -73,15 +69,13 @@ button:hover {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Download Buttons */
 .download-btns {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
 }
 
-.download-btns a {
-  text-decoration: none;
+.download-btns button {
   padding: 12px 24px;
   background-color: #007bff;
   color: white;
@@ -90,6 +84,6 @@ button:hover {
   transition: background-color 0.3s;
 }
 
-.download-btns a:hover {
+.download-btns button:hover {
   background-color: #0056b3;
 }
