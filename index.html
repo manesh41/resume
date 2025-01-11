@@ -8,6 +8,8 @@
 </head>
 <body>
     <h1>Resume Builder</h1>
+
+    <!-- Resume Form -->
     <form id="resume-form">
         <label for="name">Full Name:</label>
         <input type="text" id="name" name="name" required><br><br>
@@ -30,8 +32,12 @@
         <button type="button" onclick="generateResume()">Generate Resume</button>
     </form>
 
+    <!-- Output Resume -->
     <h2>Your Resume:</h2>
     <div id="resume-output"></div>
+
+    <!-- Download Button -->
+    <button id="download-btn" style="display:none;" onclick="downloadResume()">Download Resume</button>
 
     <script src="script.js"></script>
 </body>

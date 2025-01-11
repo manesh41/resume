@@ -9,17 +9,37 @@ function generateResume() {
 
     // Create the resume content
     const resumeContent = `
-        <h3>${name}'s Resume</h3>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <h4>Skills</h4>
-        <p>${skills}</p>
-        <h4>Education</h4>
-        <p>${education}</p>
-        <h4>Work Experience</h4>
-        <p>${experience}</p>
+        ${name}'s Resume
+
+        Email: ${email}
+        Phone: ${phone}
+
+        Skills:
+        ${skills}
+
+        Education:
+        ${education}
+
+        Work Experience:
+        ${experience}
     `;
 
     // Display the resume
     document.getElementById('resume-output').innerHTML = resumeContent;
+
+    // Enable the Download button
+    document.getElementById('download-btn').style.display = 'block';
+
+    // Save resume content in a global variable for download
+    window.resumeData = resumeContent;
+}
+
+// Function to download the resume as a .txt file
+function downloadResume() {
+    const filename = 'resume.txt';
+    const blob = new Blob([window.resumeData], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
 }
