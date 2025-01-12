@@ -8,62 +8,60 @@
 </head>
 <body>
   <div class="container">
-    <h1>Resume Builder</h1>
+    <header>
+      <h1>Resume Builder</h1>
+      <p>Fill in your details below to create your professional resume.</p>
+    </header>
 
-    <!-- Input Form -->
-    <div class="form-container">
+    <!-- Input Section -->
+    <div class="form-section">
       <h2>Enter Your Details</h2>
       <form id="resume-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" placeholder="Enter your name" required>
-
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="John Doe">
+        
         <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Enter your email" required>
-
+        <input type="email" id="email" placeholder="john.doe@example.com">
+        
         <label for="phone">Phone:</label>
-        <input type="text" id="phone" placeholder="Enter your phone number" required>
-
-        <label for="work">Work Experience:</label>
-        <textarea id="work" placeholder="Describe your work experience"></textarea>
-
+        <input type="tel" id="phone" placeholder="123-456-7890">
+        
+        <label for="work-experience">Work Experience:</label>
+        <textarea id="work-experience" placeholder="Describe your work experience"></textarea>
+        
         <label for="education">Education:</label>
-        <textarea id="education" placeholder="Describe your education"></textarea>
-
+        <textarea id="education" placeholder="Your educational background"></textarea>
+        
         <label for="skills">Skills:</label>
-        <input type="text" id="skills" placeholder="Enter skills (comma-separated)">
-
-        <button type="button" id="download-resume">Download Resume</button>
+        <textarea id="skills" placeholder="List your skills"></textarea>
       </form>
+      <button id="download-btn">Download Resume</button>
     </div>
 
-    <!-- Resume Template -->
-    <div class="resume-container">
-      <h2>Resume Preview</h2>
-      <div id="resume-preview" class="resume-template">
-        <div class="header">
-          <h1 id="preview-name">Your Name</h1>
-          <p id="preview-contact">Email: your-email@example.com | Phone: 123-456-7890</p>
-        </div>
-        <div class="section">
+    <!-- Resume Preview -->
+    <div id="resume-preview" class="resume-template">
+      <div class="header">
+        <h1 id="preview-name">Your Name</h1>
+        <p id="preview-email">Email: your.email@example.com</p>
+        <p id="preview-phone">Phone: 123-456-7890</p>
+      </div>
+      <div class="content">
+        <section>
           <h2>Work Experience</h2>
-          <p id="preview-work">Work experience will be shown here...</p>
-        </div>
-        <div class="section">
+          <p id="preview-work-experience">Your work experience will appear here.</p>
+        </section>
+        <section>
           <h2>Education</h2>
-          <p id="preview-education">Education details will be shown here...</p>
-        </div>
-        <div class="section">
+          <p id="preview-education">Your educational background will appear here.</p>
+        </section>
+        <section>
           <h2>Skills</h2>
-          <p id="preview-skills">Skills will be shown here...</p>
-        </div>
+          <p id="preview-skills">Your skills will appear here.</p>
+        </section>
       </div>
     </div>
   </div>
-
-  <!-- Scripts -->
   <script src="script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>
 

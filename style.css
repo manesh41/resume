@@ -1,100 +1,101 @@
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
   margin: 0;
   padding: 0;
-  background: #f4f4f9;
+  color: #333;
 }
 
 .container {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 0 auto;
   padding: 20px;
-  background: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
+/* Header */
+header {
   text-align: center;
-  color: #333;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  color: #005980;
+  font-size: 2em;
+}
+
+header p {
+  color: #555;
+}
+
+/* Form Section */
+.form-section {
+  background: #ffffff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
-  margin-top: 15px;
+  margin-bottom: 5px;
   font-weight: bold;
+  color: #005980;
 }
 
 input, textarea {
   width: 100%;
   padding: 10px;
-  margin: 5px 0 15px;
+  margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
 
 button {
-  background-color: #007BFF;
+  background-color: #005980;
   color: white;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
-  width: 100%;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #004466;
 }
 
 /* Resume Template */
 .resume-template {
-  padding: 20px;
+  background: #ffffff;
   border: 1px solid #ddd;
   border-radius: 5px;
-  background-color: #fafafa;
-  margin-top: 20px;
+  padding: 20px;
 }
 
 .resume-template .header {
-  text-align: center;
-  background-color: #007BFF;
+  background-color: #005980;
   color: white;
-  padding: 20px 0;
-  border-radius: 5px 5px 0 0;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.resume-template h1 {
-  margin: 0;
-  font-size: 24px;
+.resume-template .content section {
+  margin-bottom: 20px;
 }
 
-.resume-template p {
-  margin: 0;
-  font-size: 14px;
-}
-
-.resume-template .section {
-  margin: 20px 0;
-}
-
-.resume-template .section h2 {
-  color: #007BFF;
-  border-bottom: 2px solid #ddd;
+.resume-template .content h2 {
+  color: #005980;
+  border-bottom: 1px solid #ddd;
   padding-bottom: 5px;
   margin-bottom: 10px;
 }
 
-.resume-template .section p {
-  color: #555;
-  font-size: 14px;
-  margin: 5px 0;
-}
-
-/* Responsive Styles */
 @media (max-width: 768px) {
-  .container {
-    padding: 15px;
+  .resume-template, .form-section {
+    margin: 0;
+    padding: 10px;
   }
 }
 
