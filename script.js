@@ -1,65 +1,43 @@
-// Display Work Experience Section based on Selection
-document.getElementById("experience").addEventListener("change", function() {
-    const experience = this.value;
-    if (experience === "experienced") {
-        document.getElementById("experienceSection").style.display = "block";
-    } else {
-        document.getElementById("experienceSection").style.display = "none";
-    }
-});
+// Get input fields and preview elements
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const phoneInput = document.getElementById("phone");
+const workInput = document.getElementById("work");
+const educationInput = document.getElementById("education");
+const skillsInput = document.getElementById("skills");
 
-// Handle Image Upload
-let uploadedImage = null;
-document.getElementById("photo").addEventListener("change", function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            uploadedImage = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
-});
+const previewName = document.getElementById("preview-name");
+const previewEmail = document.getElementById("preview-email");
+const previewPhone = document.getElementById("preview-phone");
+const previewWork = document.getElementById("preview-work");
+const previewEducation = document.getElementById("preview-education");
+const previewSkills = document.getElementById("preview-skills");
 
-// Generate Resume Function
-function generateResume() {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const number = document.getElementById("number").value;
-    const experience = document.getElementById("experience").value;
-    const workExperience = document.getElementById("workExperience").value;
-    const skills = document.getElementById("skills").value;
-    const portfolio = document.getElementById("portfolio").value;
-
-    let resumeHTML = `
-        <h3>${name}</h3>
-        <img src="${uploadedImage}" alt="Profile Picture" style="width: 150px; height: 150px; border-radius: 50%; margin-bottom: 20px;">
-        <p>Email: ${email}</p>
-        <p>Phone: ${number}</p>
-        <p><strong>Skills:</strong> ${skills}</p>
-        <p><strong>Portfolio:</strong> ${portfolio}</p>
-    `;
-
-    if (experience === "experienced" && workExperience) {
-        resumeHTML += `<p><strong>Work Experience:</strong> ${workExperience}</p>`;
-    }
-
-    document.getElementById("resumeContent").innerHTML = resumeHTML;
-    document.getElementById("resumePreview").classList.remove("hidden");
+// Update resume preview in real-time
+function updatePreview() {
+  previewName.textContent = nameInput.value || "Your Name";
+  previewEmail.textContent = `Email: ${emailInput.value || "your-email@example.com"}`;
+  previewPhone.textContent = `Phone: ${phoneInput.value || "123-456-7890"}`;
+  previewWork.textContent = workInput.value || "Describe your work experience here...";
+  previewEducation.textContent = educationInput.value || "Describe your educational background here...";
+  previewSkills.textContent = skillsInput.value ? skillsInput.value.split(",").join(", ") : "Your skills will appear here...";
 }
 
-// Download Resume as PDF
-function downloadPDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+// Attach input listeners for real-time updates
+[nameInput, emailInput, phoneInput, workInput, educationInput, skillsInput].forEach(input => {
+  input.addEventListener("input", updatePreview);
+});
 
-    const resumeContent = document.getElementById("resumeContent").innerHTML;
-    doc.html(resumeContent, {
-        callback: function (doc) {
-            doc.save("resume.pdf");
-        },
-        x: 10,
-        y: 10
-    });
-}
+// Download resume as PDF (using jsPDF library)
+document.getElementById("download-btn").addEventListener("click", () => {
+  const element = document.getElementById("resume-preview");
+  
+  // Use html2canvas and jsPDF libraries for PDF generation
+  html2canvas(element).then(canvas => {
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF();
+    pdf.addImage(imgData, "PNG", 10, 10, 190, 0);
+    pdf.save("resume.pdf");
+  });
+});
 
