@@ -1,69 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume Builder</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Interest Calculator with Share and Download Options</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .calculator {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h1 {
+            text-align: center;
+            color: #005980;
+        }
+        label {
+            font-size: 16px;
+            margin: 10px 0;
+            display: block;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #005980;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #007b8f;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        .graph {
+            margin-top: 20px;
+        }
+        #whatsapp-share, #download-pdf {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Resume Builder</h1>
-      <p>Fill in your details below to create your professional resume.</p>
-    </header>
+    <div class="calculator">
+        <h1>Compound Interest Calculator</h1>
+        <form id="calculatorForm">
+            <label for="principal">Principal (₹):</label>
+            <input type="number" id="principal" required placeholder="Enter Principal">
+            
+            <label for="rate">Annual Interest Rate (%):</label>
+            <input type="number" id="rate" required placeholder="Enter Interest Rate">
 
-    <!-- Input Section -->
-    <div class="form-section">
-      <h2>Enter Your Details</h2>
-      <form id="resume-form">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" placeholder="John Doe">
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="john.doe@example.com">
-        
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" placeholder="123-456-7890">
-        
-        <label for="work-experience">Work Experience:</label>
-        <textarea id="work-experience" placeholder="Describe your work experience"></textarea>
-        
-        <label for="education">Education:</label>
-        <textarea id="education" placeholder="Your educational background"></textarea>
-        
-        <label for="skills">Skills:</label>
-        <textarea id="skills" placeholder="List your skills"></textarea>
-      </form>
-      <button id="download-btn">Download Resume</button>
+            <label for="times">Compounded Times per Year:</label>
+            <select id="times">
+                <option value="1">Annually</option>
+                <option value="4">Quarterly</option>
+                <option value="12">Monthly</option>
+                <option value="365">Daily</option>
+            </select>
+
+            <label for="years">Time in Years:</label>
+            <input type="number" id="years" required placeholder="Enter Number of Years">
+
+            <button type="button" onclick="calculateCompoundInterest()">Calculate</button>
+
+            <div class="result" id="result"></div>
+            <div class="graph" id="graph"></div>
+
+            <!-- WhatsApp Share Button -->
+            <button id="whatsapp-share" onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+
+            <!-- Download PDF Button -->
+            <button id="download-pdf" onclick="downloadPDF()">Download as PDF</button>
+        </form>
     </div>
 
-    <!-- Resume Preview -->
-    <div id="resume-preview" class="resume-template">
-      <div class="header">
-        <h1 id="preview-name">Your Name</h1>
-        <p id="preview-email">Email: your.email@example.com</p>
-        <p id="preview-phone">Phone: 123-456-7890</p>
-      </div>
-      <div class="content">
-        <section>
-          <h2>Work Experience</h2>
-          <p id="preview-work-experience">Your work experience will appear here.</p>
-        </section>
-        <section>
-          <h2>Education</h2>
-          <p id="preview-education">Your educational background will appear here.</p>
-        </section>
-        <section>
-          <h2>Skills</h2>
-          <p id="preview-skills">Your skills will appear here.</p>
-        </section>
-      </div>
-    </div>
-  </div>
-  <script src="script.js"></script>
+    <script>
+        function calculateCompoundInterest() {
+            // Get user input
+            const principal = parseFloat(document.getElementById("principal").value);
+            const rate = parseFloat(document.getElementById("rate").value) / 100;
+            const times = parseInt(document.getElementById("times").value);
+            const years = parseInt(document.getElementById("years").value);
+
+            // Calculate compound interest
+            const amount = principal * Math.pow(1 + (rate / times), times * years);
+            const compoundInterest = amount - principal;
+            
+            // Display the result
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = `<strong>Final Amount (₹):</strong> ₹${amount.toFixed(2)}<br><strong>Compound Interest (₹):</strong> ₹${compoundInterest.toFixed(2)}`;
+
+            // Show the WhatsApp share and download PDF buttons
+            document.getElementById('whatsapp-share').style.display = "block";
+            document.getElementById('download-pdf').style.display = "block";
+        }
+
+        function shareOnWhatsApp() {
+            const principal = parseFloat(document.getElementById("principal").value);
+            const rate = parseFloat(document.getElementById("rate").value);
+            const times = document.getElementById("times").value;
+            const years = document.getElementById("years").value;
+
+            const amount = principal * Math.pow(1 + (rate / times), times * years);
+            const compoundInterest = amount - principal;
+
+            // Prepare the message to be shared on WhatsApp
+            const message = `Compound Interest Calculator Result:\n\nPrincipal: ₹${principal}\nRate: ${rate}%\nYears: ${years}\nCompounded: ${times} times per year\n\nFinal Amount: ₹${amount.toFixed(2)}\nCompound Interest: ₹${compoundInterest.toFixed(2)}`;
+
+            // WhatsApp sharing link
+            const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
+
+            // Open WhatsApp with the message
+            window.open(whatsappURL, '_blank');
+        }
+
+        function downloadPDF() {
+            const principal = parseFloat(document.getElementById("principal").value);
+            const rate = parseFloat(document.getElementById("rate").value);
+            const times = document.getElementById("times").value;
+            const years = document.getElementById("years").value;
+
+            const amount = principal * Math.pow(1 + (rate / times), times * years);
+            const compoundInterest = amount - principal;
+
+            // Create a new jsPDF instance
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Set document title
+            doc.setFontSize(16);
+            doc.text("Compound Interest Calculator", 20, 20);
+
+            // Add calculated data to the PDF
+            doc.setFontSize(12);
+            doc.text(`Principal: ₹${principal}`, 20, 40);
+            doc.text(`Rate: ${rate}%`, 20, 50);
+            doc.text(`Years: ${years}`, 20, 60);
+            doc.text(`Compounded: ${times} times per year`, 20, 70);
+            doc.text(`Final Amount: ₹${amount.toFixed(2)}`, 20, 80);
+            doc.text(`Compound Interest: ₹${compoundInterest.toFixed(2)}`, 20, 90);
+
+            // Save the generated PDF
+            doc.save('Compound_Interest_Calculation.pdf');
+        }
+    </script>
 </body>
 </html>
+
 
 
 
