@@ -1,4 +1,4 @@
-// Get input fields and preview elements
+// Fetch elements from the DOM
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const phoneInput = document.getElementById("phone");
@@ -7,37 +7,38 @@ const educationInput = document.getElementById("education");
 const skillsInput = document.getElementById("skills");
 
 const previewName = document.getElementById("preview-name");
-const previewEmail = document.getElementById("preview-email");
-const previewPhone = document.getElementById("preview-phone");
+const previewContact = document.getElementById("preview-contact");
 const previewWork = document.getElementById("preview-work");
 const previewEducation = document.getElementById("preview-education");
 const previewSkills = document.getElementById("preview-skills");
 
-// Update resume preview in real-time
-function updatePreview() {
+// Update resume template in real-time
+function updateTemplate() {
   previewName.textContent = nameInput.value || "Your Name";
-  previewEmail.textContent = `Email: ${emailInput.value || "your-email@example.com"}`;
-  previewPhone.textContent = `Phone: ${phoneInput.value || "123-456-7890"}`;
-  previewWork.textContent = workInput.value || "Describe your work experience here...";
-  previewEducation.textContent = educationInput.value || "Describe your educational background here...";
-  previewSkills.textContent = skillsInput.value ? skillsInput.value.split(",").join(", ") : "Your skills will appear here...";
+  previewContact.textContent = `Email: ${emailInput.value || "your-email@example.com"} | Phone: ${phoneInput.value || "123-456-7890"}`;
+  previewWork.textContent = workInput.value || "Work experience will be shown here...";
+  previewEducation.textContent = educationInput.value || "Education details will be shown here...";
+  previewSkills.textContent = skillsInput.value ? skillsInput.value.split(",").join(", ") : "Skills will be shown here...";
 }
 
-// Attach input listeners for real-time updates
+// Attach real-time event listeners to input fields
 [nameInput, emailInput, phoneInput, workInput, educationInput, skillsInput].forEach(input => {
-  input.addEventListener("input", updatePreview);
+  input.addEventListener("input", updateTemplate);
 });
 
-// Download resume as PDF (using jsPDF library)
-document.getElementById("download-btn").addEventListener("click", () => {
-  const element = document.getElementById("resume-preview");
-  
-  // Use html2canvas and jsPDF libraries for PDF generation
-  html2canvas(element).then(canvas => {
+// Download Resume as PDF
+document.getElementById("download-resume").addEventListener("click", () => {
+  const resumeElement = document.getElementById("resume-preview");
+
+  // Use html2canvas to capture the resume preview
+  html2canvas(resumeElement).then(canvas => {
     const imgData = canvas.toDataURL("image/png");
-    const pdf = new jsPDF();
+
+    // Use jsPDF to generate PDF
+    const pdf = new jspdf.jsPDF();
     pdf.addImage(imgData, "PNG", 10, 10, 190, 0);
     pdf.save("resume.pdf");
   });
 });
+
 
